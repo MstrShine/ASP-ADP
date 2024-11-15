@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HAN.ASD.ADP.Helpers\HAN.ASD.ADP.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Datasets\Raw\grafen.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

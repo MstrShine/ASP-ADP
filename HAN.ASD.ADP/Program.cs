@@ -1,5 +1,5 @@
 ﻿using HAN.ASD.ADP.Datasets;
-using System.Text.Json;
+using HAN.ASD.ADP.Helpers;
 
 namespace HAN.ASD.ADP
 {
@@ -7,25 +7,10 @@ namespace HAN.ASD.ADP
     {
         static void Main(string[] args)
         {
-            var sorting = LoadJson<Sorting>(".\\Datasets\\Raw\\sorting.json");
-            var hashing = LoadJson<HashTabelSleutelWaardes>(".\\Datasets\\Raw\\hashing.json");
-            var grafen = LoadJson<Grafen>(".\\Datasets\\Raw\\grafen.json");
+            var sorting = JsonHelper.LoadJson<Sorting>(".\\Datasets\\Raw\\sorting.json");
+            var hashing = JsonHelper.LoadJson<HashTabelSleutelWaardes>(".\\Datasets\\Raw\\hashing.json");
+            var grafen = JsonHelper.LoadJson<Grafen>(".\\Datasets\\Raw\\grafen.json");
             Console.ReadLine();
-        }
-
-        public static T? LoadJson<T>(string path) where T : class
-        {
-            T? items = null;
-            using (var reader = new StreamReader(path))
-            {
-                var json = reader.ReadToEnd();
-                if (json != null)
-                {
-                    items = JsonSerializer.Deserialize<T?>(json);
-                }
-            }
-
-            return items;
         }
     }
 }
