@@ -5,7 +5,7 @@
         private T[] _elements;
         private int _top;
 
-        public Stack(int initialCapacity = 10)
+        public Stack(int initialCapacity = 1)
         {
             _elements = new T[initialCapacity];
             _top = -1;

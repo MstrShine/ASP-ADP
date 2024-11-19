@@ -6,7 +6,7 @@
         private int _size;
         private int _capacity;
 
-        public DynamicArray(int initialCapacity = 2)
+        public DynamicArray(int initialCapacity = 1)
         {
             _array = new T[initialCapacity];
             _size = 0;
