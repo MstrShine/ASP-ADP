@@ -22,19 +22,18 @@
                 throw new InvalidOperationException("Stack is empty");
             }
 
-            var value = _elements[_top--];
-            _elements[_elements.Length - 1] = default(T);
-            Resize();
+            var value = _elements[_top];
+            _elements[_top--] = default(T);
 
             return value;
         }
 
         public void Push(T item)
         {
-            if (_top >= _elements.Length / 2)
+            if (_top == _elements.Length)
                 Resize();
 
-            _elements[++_top] = item;
+            _elements[_top++] = item;
         }
 
         public T Top()
