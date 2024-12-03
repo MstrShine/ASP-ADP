@@ -1,6 +1,6 @@
-﻿namespace HAN.ASD.ADP.Sorting
+﻿namespace HAN.ASD.ADP.SortingAlg
 {
-    public static class InsertionSort
+    public static class InsertionSorter
     {
         public static void Sort<T>(ref T[] array) where T : class, IComparable
         {

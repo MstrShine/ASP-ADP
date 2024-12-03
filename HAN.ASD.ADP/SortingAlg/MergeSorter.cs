@@ -1,6 +1,6 @@
-﻿namespace HAN.ASD.ADP.Sorting
+﻿namespace HAN.ASD.ADP.SortingAlg
 {
-    public static class MergeSort<T> where T : class, IComparable
+    public static class MergeSorter<T> where T : class, IComparable
     {
         public static void Sort(ref T[] array)
         {
