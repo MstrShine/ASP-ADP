@@ -2,7 +2,7 @@
 {
     public static class SelectionSorter
     {
-        public static void Sort<T>(ref T[] array) where T : class, IComparable
+        public static void Sort<T>(T[] array) where T : class, IComparable
         {
             for (int i = 0; i < array.Length; i++)
             {

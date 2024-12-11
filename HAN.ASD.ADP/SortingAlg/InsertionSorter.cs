@@ -2,7 +2,7 @@
 {
     public static class InsertionSorter
     {
-        public static void Sort<T>(ref T[] array) where T : class, IComparable
+        public static void Sort<T>(T[] array) where T : IComparable
         {
             for (int i = 1; i < array.Length; i++)
             {
