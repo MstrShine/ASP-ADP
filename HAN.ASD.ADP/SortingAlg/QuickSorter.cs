@@ -1,23 +1,25 @@
-﻿namespace HAN.ASD.ADP.SortingAlg
+﻿using HAN.ASD.ADP.SortingAlg.Interfaces;
+
+namespace HAN.ASD.ADP.SortingAlg
 {
-    public static class QuickSorter<T> where T : IComparable
+    public class QuickSorter : ISorter
     {
-        public static void QuickSort(T[] array)
+        public void Sort<T>(T[] array) where T : IComparable<T>
         {
-            Sort(array, 0, array.Length - 1);
+            QuickSort(array, 0, array.Length - 1);
         }
 
-        private static void Sort(T[] array, int left, int right)
+        private static void QuickSort<T>(T[] array, int left, int right) where T : IComparable<T>
         {
             if (left < right)
             {
                 var pivotIndex = Partition(array, left, right);
-                Sort(array, left, pivotIndex - 1);
-                Sort(array, pivotIndex + 1, right);
+                QuickSort(array, left, pivotIndex - 1);
+                QuickSort(array, pivotIndex + 1, right);
             }
         }
 
-        private static int Partition(T[] array, int left, int right)
+        private static int Partition<T>(T[] array, int left, int right) where T : IComparable<T>
         {
             var pivot = SelectMedianPivot(array, left, (left + right) / 2, right);
             Swap(array, pivot.PivotIndex, right);
@@ -37,19 +39,19 @@
             return i + 1;
         }
 
-        private record MedianPivot(T PivotObject, int PivotIndex);
-        private static MedianPivot SelectMedianPivot(T[] array, int l, int m, int r)
+        private record MedianPivot<T>(T PivotObject, int PivotIndex) where T : IComparable<T>;
+        private static MedianPivot<T> SelectMedianPivot<T>(T[] array, int l, int m, int r) where T : IComparable<T>
         {
             var left = array[l];
             var right = array[r];
             var middle = array[m];
 
-            if ((left.CompareTo(middle) < 0 && left.CompareTo(right) > 0) || (left.CompareTo(middle) > 0 && left.CompareTo(right) < 0)) return new MedianPivot(left, l);
-            else if ((middle.CompareTo(left) < 0 && middle.CompareTo(right) > 0) || (middle.CompareTo(left) > 0 && middle.CompareTo(right) < 0)) return new MedianPivot(middle, m);
-            else return new MedianPivot(right, r);
+            if ((left.CompareTo(middle) < 0 && left.CompareTo(right) > 0) || (left.CompareTo(middle) > 0 && left.CompareTo(right) < 0)) return new MedianPivot<T>(left, l);
+            else if ((middle.CompareTo(left) < 0 && middle.CompareTo(right) > 0) || (middle.CompareTo(left) > 0 && middle.CompareTo(right) < 0)) return new MedianPivot<T>(middle, m);
+            else return new MedianPivot<T>(right, r);
         }
 
-        private static void Swap(T[] array, int i, int j)
+        private static void Swap<T>(T[] array, int i, int j) where T : IComparable<T>
         {
             var temp = array[i];
             array[i] = array[j];

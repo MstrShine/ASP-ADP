@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.Datasets
 {
-    public class HashTabelSleutelWaardes
+    public class HashTabelSleutelWaardesDataset
     {
         public int[] a { get; set; }
         public int[] b { get; set; }

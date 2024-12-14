@@ -1,8 +1,10 @@
-﻿namespace HAN.ASD.ADP.SortingAlg
+﻿using HAN.ASD.ADP.SortingAlg.Interfaces;
+
+namespace HAN.ASD.ADP.SortingAlg
 {
-    public static class InsertionSorter
+    public class InsertionSorter : ISorter
     {
-        public static void Sort<T>(T[] array) where T : IComparable
+        public void Sort<T>(T[] array) where T : IComparable<T>
         {
             for (int i = 1; i < array.Length; i++)
             {

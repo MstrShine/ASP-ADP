@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.Datasets
 {
-    public class Grafen
+    public class GrafenDataset
     {
         public int[][] lijnlijst { get; set; }
         public int[][] verbindingslijst { get; set; }

@@ -1,24 +1,26 @@
-﻿namespace HAN.ASD.ADP.SortingAlg
+﻿using HAN.ASD.ADP.SortingAlg.Interfaces;
+
+namespace HAN.ASD.ADP.SortingAlg
 {
-    public static class MergeSorter<T> where T : IComparable
+    public class MergeSorter : ISorter
     {
-        public static void Sort(T[] array)
+        public void Sort<T>(T[] array) where T : IComparable<T>
         {
-            Split(ref array, 0, array.Length - 1);
+            Split(array, 0, array.Length - 1);
         }
 
-        private static void Split(ref T[] array, int left, int right)
+        private static void Split<T>(T[] array, int left, int right) where T : IComparable<T>
         {
             if (left < right)
             {
                 int center = (left + right) / 2;
-                Split(ref array, left, center);
-                Split(ref array, center + 1, right);
-                Merge(ref array, left, center, right);
+                Split(array, left, center);
+                Split(array, center + 1, right);
+                Merge(array, left, center, right);
             }
         }
 
-        public static void Merge(ref T[] array, int left, int middle, int right)
+        public static void Merge<T>(T[] array, int left, int middle, int right) where T : IComparable<T>
         {
             int l = middle - left + 1;
             int r = right - middle;
@@ -31,7 +33,7 @@
             int j = 0;
             int k = left;
 
-            while (i <= l && j <= r)
+            while (i < l && j < r)
             {
                 if (tempLeft[i].CompareTo(tempRight[j]) <= 0)
                 {
@@ -46,16 +48,16 @@
                 k++;
             }
 
-            while (i <= l)
+            while (i < l)
             {
                 array[k] = tempLeft[i];
                 i++;
                 k++;
             }
 
-            while (j <= r)
+            while (j < r)
             {
-                array[j] = tempRight[j];
+                array[k] = tempRight[j];
                 j++;
                 k++;
             }

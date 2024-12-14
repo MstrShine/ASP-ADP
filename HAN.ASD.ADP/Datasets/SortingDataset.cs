@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.Datasets
 {
-    public class Sorting
+    public class SortingDataset
     {
         public int[] lijst_aflopend_2 { get; set; }
 
@@ -20,7 +20,7 @@
 
         public int?[] lijst_null_3 { get; set; }
 
-        public dynamic[] lijst_onsorteerbaar_3 { get; set; }
+        public object[] lijst_onsorteerbaar_3 { get; set; }
 
         public int[] lijst_oplopend_10000 { get; set; }
 
