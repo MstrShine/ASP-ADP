@@ -6,9 +6,9 @@
 
         void InsertRight(T item);
 
-        T DeleteLeft(T item);
+        T DeleteLeft();
 
-        T DeleteRight(T item);
+        T DeleteRight();
 
         int Size();
     }
