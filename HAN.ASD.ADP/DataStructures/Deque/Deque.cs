@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.Deque
 {
-    public class Deque<T> : IDeque<T>
+    public class Deque<T> : IDeque<T> where T : IComparable<T>
     {
         private T[] _items;
         private int _leftIndex;

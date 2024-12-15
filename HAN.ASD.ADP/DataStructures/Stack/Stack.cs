@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.Stack
 {
-    public class Stack<T> : IStack<T>
+    public class Stack<T> : IStack<T> where T : IComparable<T>
     {
         private T[] _elements;
         private int _top;

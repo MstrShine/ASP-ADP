@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.Deque
 {
-    public interface IDeque<T>
+    public interface IDeque<T> where T : IComparable<T>
     {
         void InsertLeft(T item);
 

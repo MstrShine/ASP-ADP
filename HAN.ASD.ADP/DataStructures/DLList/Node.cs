@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.DLList
 {
-    public class Node<T> where T : IEquatable<T>
+    public class Node<T> where T : IComparable<T>
     {
         public T Value { get; set; }
 

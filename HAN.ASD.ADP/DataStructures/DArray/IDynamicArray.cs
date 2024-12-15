@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.DArray
 {
-    public interface IDynamicArray<T> where T : IEquatable<T>
+    public interface IDynamicArray<T> where T : IComparable<T>
     {
         public T this[int index] { get; set; }
 
