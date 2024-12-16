@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.DLList
 {
-    public class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : IEquatable<T>
+    public class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : IComparable<T>
     {
         private Node<T>? Head { get; set; }
 
@@ -38,7 +38,7 @@
             var current = Head;
             while (current != null)
             {
-                if (current.Value.Equals(element))
+                if (current.Value.CompareTo(element) == 0)
                 {
                     return true;
                 }
@@ -71,7 +71,7 @@
             var index = 0;
             while (current != null)
             {
-                if (current.Value.Equals(element))
+                if (current.Value.CompareTo(element) == 0)
                 {
                     return index;
                 }
@@ -139,5 +139,7 @@
 
             current.Value = element;
         }
+
+        public int Size() => _size;
     }
 }

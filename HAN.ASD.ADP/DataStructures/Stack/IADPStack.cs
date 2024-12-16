@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.Stack
 {
-    public interface IStack<T>
+    public interface IADPStack<T> where T : IComparable<T>
     {
         void Push(T item);
 

@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.DArray
 {
-    public class DynamicArray<T> : IDynamicArray<T> where T : IEquatable<T>
+    public class DynamicArray<T> : IDynamicArray<T> where T : IComparable<T>
     {
         private T[] _array;
         private int _size;
@@ -40,7 +40,7 @@
         {
             for (int i = 0; i < _size; i++)
             {
-                if (element.Equals(_array[i]))
+                if (element.CompareTo(_array[i]) == 0)
                 {
                     return true;
                 }
@@ -62,7 +62,7 @@
         {
             for (int i = 0; i < _size; i++)
             {
-                if (_array[i].Equals(element))
+                if (_array[i].CompareTo(element) == 0)
                 {
                     return i;
                 }
@@ -101,6 +101,8 @@
 
             _array[index] = element;
         }
+
+        public int Size() => _size;
 
         private void Resize()
         {

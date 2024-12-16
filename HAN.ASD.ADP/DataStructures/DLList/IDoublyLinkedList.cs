@@ -1,6 +1,6 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.DLList
 {
-    public interface IDoublyLinkedList<T> where T : IEquatable<T>
+    public interface IDoublyLinkedList<T> where T : IComparable<T>
     {
         public void Add(T element);
 
@@ -15,5 +15,7 @@
         public bool Contains(T element);
 
         public int IndexOf(T element);
+
+        public int Size();
     }
 }

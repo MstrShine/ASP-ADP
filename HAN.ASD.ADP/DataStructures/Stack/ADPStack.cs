@@ -1,11 +1,11 @@
 ﻿namespace HAN.ASD.ADP.DataStructures.Stack
 {
-    public class Stack<T> : IStack<T>
+    public class ADPStack<T> : IADPStack<T> where T : IComparable<T>
     {
         private T[] _elements;
         private int _top;
 
-        public Stack(int initialCapacity = 1)
+        public ADPStack(int initialCapacity = 1)
         {
             _elements = new T[initialCapacity];
             _top = -1;
@@ -30,10 +30,10 @@
 
         public void Push(T item)
         {
-            if (_top == _elements.Length)
+            if (_top + 1 == _elements.Length)
                 Resize();
-
-            _elements[_top++] = item;
+            _top++;
+            _elements[_top] = item;
         }
 
         public T Top()
