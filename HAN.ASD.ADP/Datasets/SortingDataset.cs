@@ -27,5 +27,7 @@
         public int[] lijst_willekeurig_10000 { get; set; }
 
         public int[] lijst_willekeurig_3 { get; set; }
+
+        public Pizza[] lijst_pizzas {get; set; }
     }
 }
