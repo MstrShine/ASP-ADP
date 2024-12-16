@@ -15,5 +15,7 @@
         public bool Contains(T element);
 
         public int IndexOf(T element);
+
+        public int Size();
     }
 }

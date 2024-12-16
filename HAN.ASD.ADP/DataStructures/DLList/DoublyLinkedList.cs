@@ -139,5 +139,7 @@
 
             current.Value = element;
         }
+
+        public int Size() => _size;
     }
 }
