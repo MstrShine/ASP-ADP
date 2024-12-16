@@ -108,7 +108,10 @@
         {
             _capacity = (_capacity * 2) + 1;
             var temp = new T[_capacity];
-            Array.Copy(_array, 0, temp, 0, _size);
+            for (int i = 0; i < _size; i++)
+            {
+                temp[i] = _array[i];
+            }
             _array = temp;
         }
     }

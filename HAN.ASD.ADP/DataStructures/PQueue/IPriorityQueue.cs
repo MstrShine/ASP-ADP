@@ -7,5 +7,7 @@
         T Peek();
 
         T Poll();
+
+        int Size();
     }
 }
