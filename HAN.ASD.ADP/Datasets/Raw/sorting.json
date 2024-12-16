@@ -38042,5 +38042,27 @@
     1,
     3,
     2
-  ]
+  ],
+  "lijst_pizzas" : [
+      { "name": "Margherita", "calories": 250 },
+      { "name": "Pepperoni", "calories": 300 },
+      { "name": "Veggie", "calories": 220 },
+      { "name": "Hawaiian", "calories": 330 },
+      { "name": "BBQ Chicken", "calories": 350 },
+      { "name": "Cheese", "calories": 280 },
+      { "name": "Mushroom", "calories": 270 },
+      { "name": "Four Cheese", "calories": 400 },
+      { "name": "Meat Lovers", "calories": 450 },
+      { "name": "Buffalo Chicken", "calories": 380 },
+      { "name": "Spinach and Feta", "calories": 260 },
+      { "name": "Seafood", "calories": 330 },
+      { "name": "Chicken Alfredo", "calories": 370 },
+      { "name": "Pesto", "calories": 310 },
+      { "name": "Caprese", "calories": 240 },
+      { "name": "Taco", "calories": 400 },
+      { "name": "Lasagna Pizza", "calories": 500 },
+      { "name": "Pepperoni & Sausage", "calories": 420 },
+      { "name": "Tomato Basil", "calories": 230 },
+      { "name": "Philly Cheesesteak", "calories": 390 }
+    ]
 }

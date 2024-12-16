@@ -213,5 +213,19 @@ namespace HAN.ASD.ADP.Test.Sorting
             var compare = GetSortingData();
             CollectionAssert.AreNotEqual(SortingData.lijst_willekeurig_3, compare.lijst_willekeurig_3);
         }
+
+        [TestMethod]
+
+        public void SortPizzas()
+        {
+            Watch.Restart();
+            Sorter.Sort(SortingData.lijst_pizzas);
+            Watch.Stop();
+
+            Console.WriteLine(Watch.ToString());
+
+            var compare = GetSortingData();
+            CollectionAssert.AreNotEqual(SortingData.lijst_pizzas, compare.lijst_pizzas);
+        }
     }
 }
