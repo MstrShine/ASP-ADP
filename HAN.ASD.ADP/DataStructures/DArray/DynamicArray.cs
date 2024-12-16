@@ -102,6 +102,8 @@
             _array[index] = element;
         }
 
+        public int Size() => _size;
+
         private void Resize()
         {
             _capacity = (_capacity * 2) + 1;
