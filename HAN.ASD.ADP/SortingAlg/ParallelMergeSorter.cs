@@ -8,79 +8,76 @@ namespace HAN.ASD.ADP.SortingAlg
 
         public async Task Sort<T>(T[] array) where T : IComparable<T>
         {
-            await AsyncSplit(array, 0, array.Length - 1);
+            var buffer = new T[array.Length];
+            await AsyncSplit(array, 0, array.Length - 1, buffer);
         }
 
-        private async Task AsyncSplit<T>(T[] array, int left, int right) where T : IComparable<T>
+        private async Task AsyncSplit<T>(T[] array, int left, int right, T[] buffer) where T : IComparable<T>
         {
             if (left >= right)
                 return;
 
             if (right - left <= CUTOFF)
             {
-                SyncSplit(array, left, right);
+                SyncSplit(array, left, right, buffer);
             }
             else
             {
                 int center = (left + right) / 2;
-                var leftSplit = AsyncSplit(array, left, center);
-                var rightSplit = AsyncSplit(array, center + 1, right);
+                var leftSplit = AsyncSplit(array, left, center, buffer);
+                var rightSplit = AsyncSplit(array, center + 1, right, buffer);
 
                 await Task.WhenAll(leftSplit, rightSplit);
 
-                Merge(array, left, center, right);
+                Merge(array, left, center, right, buffer);
             }
         }
 
-        public void SyncSplit<T>(T[] array, int left, int right) where T : IComparable<T>
+        public void SyncSplit<T>(T[] array, int left, int right, T[] buffer) where T : IComparable<T>
         {
             if (left < right)
             {
                 int center = (left + right) / 2;
-                SyncSplit(array, left, center);
-                SyncSplit(array, center + 1, right);
-                Merge(array, left, center, right);
+                SyncSplit(array, left, center, buffer);
+                SyncSplit(array, center + 1, right, buffer);
+
+                Merge(array, left, center, right, buffer);
             }
         }
 
-        public static void Merge<T>(T[] array, int left, int middle, int right) where T : IComparable<T>
+        public static void Merge<T>(T[] array, int left, int middle, int right, T[] buffer) where T : IComparable<T>
         {
-            int l = middle - left + 1;
-            int r = right - middle;
-            var tempLeft = new T[l];
-            var tempRight = new T[r];
-            Array.Copy(array, left, tempLeft, 0, l);
-            Array.Copy(array, middle + 1, tempRight, 0, r);
-
-            int i = 0;
-            int j = 0;
+            int i = left;
+            int j = middle + 1;
             int k = left;
 
-            while (i < l && j < r)
+            Array.Copy(array, left, buffer, left, right - left + 1);
+
+            while (i <= middle && j <= right)
             {
-                if (tempLeft[i].CompareTo(tempRight[j]) <= 0)
+                if (buffer[i].CompareTo(buffer[j]) <= 0)
                 {
-                    array[k] = tempLeft[i];
+                    array[k] = buffer[i];
                     i++;
                 }
                 else
                 {
-                    array[k] = tempRight[j];
+                    array[k] = buffer[j];
                     j++;
                 }
                 k++;
             }
 
-            while (i < l)
+            while (i <= middle)
             {
-                array[k] = tempLeft[i];
+                array[k] = buffer[i];
                 i++;
                 k++;
             }
 
-            while (j < r)
+            while (j <= right)
             {
-                array[k] = tempRight[j];
+                array[k] = buffer[j];
                 j++;
                 k++;
             }

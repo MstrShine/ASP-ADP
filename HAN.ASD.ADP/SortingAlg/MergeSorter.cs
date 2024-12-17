@@ -6,58 +6,54 @@ namespace HAN.ASD.ADP.SortingAlg
     {
         public void Sort<T>(T[] array) where T : IComparable<T>
         {
-            Split(array, 0, array.Length - 1);
+            var buffer = new T[array.Length];
+            Split(array, 0, array.Length - 1, buffer);
         }
 
-        private static void Split<T>(T[] array, int left, int right) where T : IComparable<T>
+        private static void Split<T>(T[] array, int left, int right, T[] buffer) where T : IComparable<T>
         {
             if (left < right)
             {
                 int center = (left + right) / 2;
-                Split(array, left, center);
-                Split(array, center + 1, right);
-                Merge(array, left, center, right);
+                Split(array, left, center, buffer);
+                Split(array, center + 1, right, buffer);
+                Merge(array, left, center, right, buffer);
             }
         }
 
-        public static void Merge<T>(T[] array, int left, int middle, int right) where T : IComparable<T>
+        public static void Merge<T>(T[] array, int left, int middle, int right, T[] buffer) where T : IComparable<T>
         {
-            int l = middle - left + 1;
-            int r = right - middle;
-            var tempLeft = new T[l];
-            var tempRight = new T[r];
-            Array.Copy(array, left, tempLeft, 0, l);
-            Array.Copy(array, middle + 1, tempRight, 0, r);
-
-            int i = 0;
-            int j = 0;
+            int i = left;
+            int j = middle + 1;
             int k = left;
 
-            while (i < l && j < r)
+            Array.Copy(array, left, buffer, left, right - left + 1);
+
+            while (i <= middle && j <= right)
             {
-                if (tempLeft[i].CompareTo(tempRight[j]) <= 0)
+                if (buffer[i].CompareTo(buffer[j]) <= 0)
                 {
-                    array[k] = tempLeft[i];
+                    array[k] = buffer[i];
                     i++;
                 }
                 else
                 {
-                    array[k] = tempRight[j];
+                    array[k] = buffer[j];
                     j++;
                 }
                 k++;
             }
 
-            while (i < l)
+            while (i <= middle)
             {
-                array[k] = tempLeft[i];
+                array[k] = buffer[i];
                 i++;
                 k++;
             }
 
-            while (j < r)
+            while (j <= right)
             {
-                array[k] = tempRight[j];
+                array[k] = buffer[j];
                 j++;
                 k++;
             }
