@@ -2,92 +2,92 @@
 {
     public class Deque<T> : IDeque<T> where T : IComparable<T>
     {
-        private T[] items;
-        private int front;
-        private int rear;
-        private int count;
+        private T[] _array;
+        private int _front;
+        private int _rear;
+        private int _count;
 
         public Deque(int capacity = 1)
         {
-            items = new T[capacity];
-            front = 0;
-            rear = -1;
-            count = 0;
+            _array = new T[capacity];
+            _front = 0;
+            _rear = -1;
+            _count = 0;
         }
 
         public void InsertLeft(T item)
         {
-            if (count == items.Length)
+            if (_count == _array.Length)
                 Resize();
 
-            if (front == 0)
+            if (_front == 0)
             {
-                front = items.Length - 1;
+                _front = _array.Length - 1;
             }
             else
             {
-                front--;
+                _front--;
             }
 
-            items[front] = item;
-            count++;
+            _array[_front] = item;
+            _count++;
         }
 
         public void InsertRight(T item)
         {
-            if (count == items.Length)
+            if (_count == _array.Length)
                 Resize();
 
-            rear = (rear + 1) % items.Length;
+            _rear = (_rear + 1) % _array.Length;
 
-            items[rear] = item;
-            count++;
+            _array[_rear] = item;
+            _count++;
         }
 
         public T DeleteLeft()
         {
-            if (count == 0)
+            if (_count == 0)
                 throw new InvalidOperationException("Deque is empty.");
 
-            int index = front;
-            front = (front + 1) % items.Length;
-            count--;
-            return items[index];
+            int index = _front;
+            _front = (_front + 1) % _array.Length;
+            _count--;
+            return _array[index];
         }
 
         public T DeleteRight()
         {
-            if (count == 0)
+            if (_count == 0)
                 throw new InvalidOperationException("Deque is empty.");
 
-            int index = rear;
-            if (rear == -1)
+            int index = _rear;
+            if (_rear == -1)
                 index = 0;
 
-            rear = (rear - 1 + items.Length) % items.Length;
-            count--;
-            return items[index];
+            _rear = (_rear - 1 + _array.Length) % _array.Length;
+            _count--;
+            return _array[index];
         }
 
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         private void Resize()
         {
-            int oldCapacity = items.Length;
+            int oldCapacity = _array.Length;
             int newCapacity = oldCapacity * 2;
             T[] newItems = new T[newCapacity];
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < _count; i++)
             {
-                newItems[i] = items[(front + i) % oldCapacity];
+                newItems[i] = _array[(_front + i) % oldCapacity];
             }
 
-            front = 0;
-            rear = count - 1;
-            items = newItems;
+            _front = 0;
+            _rear = _count - 1;
+            _array = newItems;
         }
     }
 }
