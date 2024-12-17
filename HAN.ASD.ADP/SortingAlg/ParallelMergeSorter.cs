@@ -4,23 +4,43 @@ namespace HAN.ASD.ADP.SortingAlg
 {
     public class ParallelMergeSorter : IAsyncSorter
     {
+        private const int CUTOFF = 1000;
+
         public async Task Sort<T>(T[] array) where T : IComparable<T>
         {
-            await Split(array, 0, array.Length - 1);
+            await AsyncSplit(array, 0, array.Length - 1);
         }
 
-        private async Task Split<T>(T[] array, int left, int right) where T : IComparable<T>
+        private async Task AsyncSplit<T>(T[] array, int left, int right) where T : IComparable<T>
         {
             if (left >= right)
                 return;
 
-            int center = (left + right) / 2;
-            var leftSplit = Split(array, left, center);
-            var rightSplit = Split(array, center + 1, right);
+            if (right - left <= CUTOFF)
+            {
+                SyncSplit(array, left, right);
+            }
+            else
+            {
+                int center = (left + right) / 2;
+                var leftSplit = AsyncSplit(array, left, center);
+                var rightSplit = AsyncSplit(array, center + 1, right);
 
-            await Task.WhenAll(leftSplit, rightSplit);
+                await Task.WhenAll(leftSplit, rightSplit);
 
-            Merge(array, left, center, right);
+                Merge(array, left, center, right);
+            }
+        }
+
+        public void SyncSplit<T>(T[] array, int left, int right) where T : IComparable<T>
+        {
+            if (left < right)
+            {
+                int center = (left + right) / 2;
+                SyncSplit(array, left, center);
+                SyncSplit(array, center + 1, right);
+                Merge(array, left, center, right);
+            }
         }
 
         public static void Merge<T>(T[] array, int left, int middle, int right) where T : IComparable<T>
