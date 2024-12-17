@@ -73,6 +73,66 @@ namespace HAN.ASD.ADP.Test.DataStructures
         }
 
         [TestMethod]
+        public void Deque_PropperSize_A_WarmUp()
+        {
+            var deque = new Deque<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Deque_PropperSize_Adding10()
+        {
+            var deque = new Deque<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Deque_PropperSize_Adding100()
+        {
+            var deque = new Deque<int>(100);
+            Watch.Restart();
+            for (int i = 0; i < 100; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Deque_PropperSize_Adding1000()
+        {
+            var deque = new Deque<int>(1000);
+            Watch.Restart();
+            for (int i = 0; i < 1000; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Deque_PropperSize_Adding10000()
+        {
+            var deque = new Deque<int>(10000);
+            Watch.Restart();
+            for (int i = 0; i < 10000; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Deque_PropperSize_Adding100000()
+        {
+            var deque = new Deque<int>(100000);
+            Watch.Restart();
+            for (int i = 0; i < 100000; i++) { deque.InsertLeft(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
         public void Deque_D_WarmUp()
         {
             var deque = new Deque<int>();
@@ -265,6 +325,90 @@ namespace HAN.ASD.ADP.Test.DataStructures
             Watch.Stop();
             Console.WriteLine(Watch.ToString());
         }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_D_WarmUp()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 10; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_Deleting10()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 10; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_Deleting100()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 100; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_Deleting1000()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 1000; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_Deleting10000()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 10000; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DoublyLinkedList_LastElement_Deleting100000()
+        {
+            var dList = new DoublyLinkedList<int>();
+            for (int i = 0; i < 100000; i++) { dList.Add(i); }
+            Watch.Restart();
+            while (dList.Size() != 0)
+            {
+                dList.Remove(index: dList.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
         #endregion
 
         #region DynamicArray
@@ -322,6 +466,66 @@ namespace HAN.ASD.ADP.Test.DataStructures
         public void DynamicArray_Adding100000()
         {
             var dArray = new DynamicArray<int>();
+            Watch.Restart();
+            for (int i = 0; i < 100000; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_A_WarmUp()
+        {
+            var dArray = new DynamicArray<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_Adding10()
+        {
+            var dArray = new DynamicArray<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_Adding100()
+        {
+            var dArray = new DynamicArray<int>(100);
+            Watch.Restart();
+            for (int i = 0; i < 100; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_Adding1000()
+        {
+            var dArray = new DynamicArray<int>(1000);
+            Watch.Restart();
+            for (int i = 0; i < 1000; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_Adding10000()
+        {
+            var dArray = new DynamicArray<int>(10000);
+            Watch.Restart();
+            for (int i = 0; i < 10000; i++) { dArray.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_PropperSize_Adding100000()
+        {
+            var dArray = new DynamicArray<int>(100000);
             Watch.Restart();
             for (int i = 0; i < 100000; i++) { dArray.Add(i); }
             Watch.Stop();
@@ -393,6 +597,174 @@ namespace HAN.ASD.ADP.Test.DataStructures
             Watch.Stop();
             Console.WriteLine(Watch.ToString());
         }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_D_WarmUp()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_Deleting10()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_Deleting100()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 100; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_Deleting1000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 1000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_Deleting10000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_LastIndex_Deleting100000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 100000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: dArray.Size() - 1);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_D_WarmUp()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_Deleting10()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_Deleting100()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 100; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_Deleting1000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 1000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_Deleting10000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 10000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void DynamicArray_FirstIndex_Deleting100000()
+        {
+            var dArray = new DynamicArray<int>();
+            for (int i = 0; i < 100000; i++) { dArray.Add(i); }
+            Watch.Restart();
+            while (dArray.Size() != 0)
+            {
+                dArray.Remove(index: 0);
+            }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
         #endregion
 
         #region PriorityQueue
@@ -450,6 +822,66 @@ namespace HAN.ASD.ADP.Test.DataStructures
         public void PriorityQueue_Adding100000()
         {
             var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>();
+            Watch.Restart();
+            for (int i = 0; i < 100000; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_A_WarmUp()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_Adding10()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_Adding100()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(100);
+            Watch.Restart();
+            for (int i = 0; i < 100; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_Adding1000()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(10000);
+            Watch.Restart();
+            for (int i = 0; i < 1000; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_Adding10000()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(10000);
+            Watch.Restart();
+            for (int i = 0; i < 10000; i++) { pQueue.Add(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void PriorityQueue_PropperSize_Adding100000()
+        {
+            var pQueue = new ADP.DataStructures.PQueue.PriorityQueue<int>(100000);
             Watch.Restart();
             for (int i = 0; i < 100000; i++) { pQueue.Add(i); }
             Watch.Stop();
@@ -578,6 +1010,66 @@ namespace HAN.ASD.ADP.Test.DataStructures
         public void Stack_Adding100000()
         {
             var stack = new ADPStack<int>();
+            Watch.Restart();
+            for (int i = 0; i < 100000; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_A_WarmUp()
+        {
+            var stack = new ADPStack<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_Adding10()
+        {
+            var stack = new ADPStack<int>(10);
+            Watch.Restart();
+            for (int i = 0; i < 10; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_Adding100()
+        {
+            var stack = new ADPStack<int>(100);
+            Watch.Restart();
+            for (int i = 0; i < 100; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_Adding1000()
+        {
+            var stack = new ADPStack<int>(1000);
+            Watch.Restart();
+            for (int i = 0; i < 1000; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_Adding10000()
+        {
+            var stack = new ADPStack<int>(1000);
+            Watch.Restart();
+            for (int i = 0; i < 10000; i++) { stack.Push(i); }
+            Watch.Stop();
+            Console.WriteLine(Watch.ToString());
+        }
+
+        [TestMethod]
+        public void Stack_PropperSize_Adding100000()
+        {
+            var stack = new ADPStack<int>(10000);
             Watch.Restart();
             for (int i = 0; i < 100000; i++) { stack.Push(i); }
             Watch.Stop();
