@@ -8,11 +8,15 @@
 
         public TreeNode<T> Right { get; set; }
 
+        public int Height { get; set; }
+
         public TreeNode(T value)
         {
             Value = value;
             Left = null;
             Right = null;
+
+            Height = 1;
         }
     }
 }
