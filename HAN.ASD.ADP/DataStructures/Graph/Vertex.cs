@@ -2,7 +2,7 @@
 {
     public class Vertex
     {
-        public string Name { get; set; };
+        public string Name { get; set; }
         public LinkedList<Edge> Edges { get; set; }
 
         public int Distance { get; set; }
