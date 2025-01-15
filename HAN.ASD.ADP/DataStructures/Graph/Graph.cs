@@ -52,7 +52,7 @@
             }
         }
 
-        public void UnweightedShortestPath(string startName)
+        public List<Vertex> UnweightedShortestPath(string startName)
         {
             if (!_vertexMap.TryGetValue(startName, out Vertex start))
             {
@@ -79,9 +79,11 @@
                     }
                 }
             }
+
+            return GetVertices();
         }
 
-        public void Dijkstra(string startName)
+        public List<Vertex> Dijkstra(string startName)
         {
             if (!_vertexMap.TryGetValue(startName, out Vertex start))
             {
@@ -122,6 +124,8 @@
                     }
                 }
             }
+
+            return GetVertices();
         }
 
         public void PrintGraph()
@@ -134,6 +138,11 @@
                     Console.WriteLine($"  -> {edge.Destination.Name} (Cost: {edge.Cost})");
                 }
             }
+        }
+
+        public List<Vertex> GetVertices()
+        {
+            return _vertexMap.Values.ToList();
         }
 
         private void Clear()
