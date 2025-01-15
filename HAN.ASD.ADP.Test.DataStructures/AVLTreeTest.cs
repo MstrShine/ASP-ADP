@@ -1,4 +1,6 @@
-﻿using HAN.ASD.ADP.DataStructures.BinaryTree;
+﻿using HAN.ASD.ADP.Datasets;
+using HAN.ASD.ADP.DataStructures.BinaryTree;
+using HAN.ASD.ADP.Helpers;
 using System.Diagnostics;
 
 namespace HAN.ASD.ADP.Test.DataStructures
@@ -7,6 +9,20 @@ namespace HAN.ASD.ADP.Test.DataStructures
     public class AVLTreeTest
     {
         private Stopwatch Watch = new Stopwatch();
+
+        private SortingDataset _dataSet;
+
+        [TestInitialize]
+        public void Test_Init()
+        {
+            var dataset = JsonHelper.LoadJson<SortingDataset>(".\\Datasets\\Raw\\sorting.json");
+            if (dataset == null)
+            {
+                _dataSet = new SortingDataset();
+                return;
+            }
+            _dataSet = dataset;
+        }
 
         [TestMethod]
         public void Insert10()
@@ -144,6 +160,254 @@ namespace HAN.ASD.ADP.Test.DataStructures
                 Console.WriteLine(ex.Message);
                 Assert.IsTrue(true);
             }
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstAflopend2()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_aflopend_2;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstOplopend2()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_oplopend_2;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstFloat8001()
+        {
+            var tree = new AVLTree<float>();
+            var lijst = _dataSet.lijst_float_8001;
+            Watch.Restart();
+            int duplicates = 0;
+            foreach (var item in lijst)
+            {
+                try
+                {
+                    tree.Insert(item);
+                }
+                catch (Exception)
+                {
+                    duplicates++;
+                }
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+            Console.WriteLine($"Duplicates {duplicates}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstGesorteerdAflopend3()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_gesorteerd_aflopend_3;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstGesorteerdOplopend3()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_gesorteerd_oplopend_3;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstHerhaald1000()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_herhaald_1000;
+            Watch.Restart();
+            int duplicates = 0;
+            foreach (var item in lijst)
+            {
+                try
+                {
+                    tree.Insert(item);
+                }
+                catch (Exception)
+                {
+                    duplicates++;
+                }
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+            Console.WriteLine($"Duplicates {duplicates}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstLeeg()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_leeg_0;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstOplopend10000()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_oplopend_10000;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstWillekeurig10000()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_willekeurig_10000;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstWillekeurig10000_FindMiddle()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_willekeurig_10000;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+
+            Watch.Restart();
+            var found = tree.Find(lijst[lijst.Length / 2]);
+            Watch.Stop();
+
+            Assert.AreEqual(lijst[lijst.Length / 2], found);
+
+            Console.WriteLine($"Found middle {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstWillekeurig10000_FindMin()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_willekeurig_10000;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+
+            Watch.Restart();
+            var found = tree.Min();
+            Watch.Stop();
+
+            Console.WriteLine($"Found min {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstWillekeurig10000_FindMax()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_willekeurig_10000;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+
+            Watch.Restart();
+            var found = tree.Max();
+            Watch.Stop();
+
+            Console.WriteLine($"Found max {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstWillekeurig3()
+        {
+            var tree = new AVLTree<int>();
+            var lijst = _dataSet.lijst_willekeurig_3;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
+        }
+
+        [TestMethod]
+        public void DataSet_Insert_LijstPizzas()
+        {
+            var tree = new AVLTree<Pizza>();
+            var lijst = _dataSet.lijst_pizzas;
+            Watch.Restart();
+            foreach (var item in lijst)
+            {
+                tree.Insert(item);
+            }
+            Watch.Stop();
+
+            Console.WriteLine($"Insert lijst {Watch}");
         }
     }
 }

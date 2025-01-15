@@ -28,6 +28,6 @@
 
         public int[] lijst_willekeurig_3 { get; set; }
 
-        public Pizza[] lijst_pizzas {get; set; }
+        public Pizza[] lijst_pizzas { get; set; }
     }
 }
